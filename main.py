@@ -73,6 +73,6 @@ def generate(message: str):
     img = qr.make_image(fill_color="#000000", back_color="#ffffff")
     buf = io.BytesIO()
     img.save(buf)
-    buf.seek(0) # important here!
+    buf.seek(0)
     return StreamingResponse(buf, media_type="image/jpeg")
 '''
