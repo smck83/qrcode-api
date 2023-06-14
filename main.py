@@ -54,7 +54,7 @@ def generate(message: str):
             img = qrcode.make(shortURL)
             buf = io.BytesIO()
             img.save(buf)
-            buf.seek(0) # important here!
+            buf.seek(0)
             return StreamingResponse(buf, media_type="image/jpeg")
     else:
         return {"error":"please ensure a URL is parsed"}
