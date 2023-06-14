@@ -4,11 +4,11 @@ ARG MY_APP_PATH=/opt/generate-qr-code
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ntp \
-    && mkdir -p ${MY_APP_PATH} \
-    && pip install fastapi uvicorn["standard"] qrcode
+    && mkdir -p ${MY_APP_PATH}
 
-ADD main.py run.py ${MY_APP_PATH}
-# RUN pip install fastapi uvicorn["standard"]
+ADD main.py requirements.txt run.py ${MY_APP_PATH}
+#RUN pip install -r ${MY_APP_PATH}/requirements.txt
+RUN pip install fastapi uvicorn["standard"] qrcode pillow requests
 WORKDIR ${MY_APP_PATH}
 
 
