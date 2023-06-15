@@ -11,8 +11,9 @@
  `SHORTIO_APIKEY` and `SHORTIO_DOMAIN`
 
  e.g.
-
- `docker run -it -p 8000:8000 -e SHORTIO_APIKEY="<--  Your short.io API key-->" -e SHORTIO_DOMAIN="<-- Your short.io Domain Name -->" smck83/qrcode-api`
+````
+ docker run -it -p 8000:8000 -e SHORTIO_APIKEY="<--  Your short.io API key-->" -e SHORTIO_DOMAIN="<-- Your short.io Domain Name -->" smck83/qrcode-api
+ ````
 
 If you don't want to use URL shortening and are happy for larger `version` QR codes; you can run vai:
 
