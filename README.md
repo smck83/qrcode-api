@@ -16,7 +16,9 @@
 
 If you don't want to use URL shortening and are happy for larger `version` QR codes; you can run vai:
 
-`docker run -it -p 8000:8000 smck83/qrcode-api`
+````
+docker run -it -p 8000:8000 smck83/qrcode-api
+````
 
 
 
