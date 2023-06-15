@@ -6,9 +6,10 @@
 
  Support for URL shortener service `short.io` has been added. This allows you to keep the QR code version low, which means a more simple QR code.
 
- TO use `https://short.io` you will need to parse ENVIRONMENT VARIABLES:
+ TO use `https://short.io` you will need to signup for a FREE or PAID account and parse the two(2) `ENVIRONMENT VARIABLES` to the docker container:
 
- `SHORTIO_APIKEY` and `SHORTIO_DOMAIN`
+ - `SHORTIO_APIKEY`
+ - `SHORTIO_DOMAIN`
 
  e.g.
 ````
