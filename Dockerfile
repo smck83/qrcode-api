@@ -7,8 +7,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     && mkdir -p ${MY_APP_PATH}
 
 ADD main.py requirements.txt run.py ${MY_APP_PATH}
-#RUN pip install -r ${MY_APP_PATH}/requirements.txt
-RUN pip install fastapi uvicorn["standard"] qrcode pillow requests
+RUN pip install -r ${MY_APP_PATH}/requirements.txt
+#RUN pip install fastapi uvicorn["standard"] qrcode[pil] requests
 WORKDIR ${MY_APP_PATH}
 
 

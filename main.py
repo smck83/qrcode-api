@@ -6,6 +6,8 @@ from starlette.responses import StreamingResponse
 import re
 import requests
 import os
+from fastapi import FastAPI
+
 cache = {}
 shortenURLs = False
 if 'SHORTIO_APIKEY' in os.environ:
@@ -44,10 +46,14 @@ app = FastAPI()
 
 
 @app.get("/generate-qr-code")
-def generate(message: str):
+def generate(message: str,short: bool = 1):
     if re.match("^http(s|):\/\/.+\..+",message):
         try:
-            shortURL = createShortIOURL(message)
+            if short == 1:
+                shortURL = createShortIOURL(message)
+            else:
+                print("URL Shortening override.")
+                shortURL = message
         except Exception as e:
             print(e)
         else:
@@ -59,20 +65,5 @@ def generate(message: str):
     else:
         return {"error":"please ensure a URL is parsed"}
 
-'''
-@app.get("/generate-qr-code2")
-def generate(message: str):
-    qr = qrcode.QRCode(
-        version=12,
-        error_correction=qrcode.constants.ERROR_CORRECT_H,
-        box_size=4,
-        border=4
-    )
-    qr.add_data(message)
-    qr.make()
-    img = qr.make_image(fill_color="#000000", back_color="#ffffff")
-    buf = io.BytesIO()
-    img.save(buf)
-    buf.seek(0)
-    return StreamingResponse(buf, media_type="image/jpeg")
-'''
+
+

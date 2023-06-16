@@ -1,5 +1,4 @@
 fastapi
-uvicorn["standard"]
-qrcode
-pillow
+uvicorn[standard]
+qrcode[pil]
 requests
