@@ -47,9 +47,9 @@ app = FastAPI()
 
 @app.get("/generate-qr-code")
 def generate(message: str,short: bool = 1):
-    if re.match("^http(s|):\/\/.+\..+",message):
+    if re.match("(^http(s|):\/\/.+\..+|\[rawlink\])",message):
         try:
-            if short == 1:
+            if short == 1 and message != "[rawlink]":
                 shortURL = createShortIOURL(message)
             else:
                 print("URL Shortening override.")
