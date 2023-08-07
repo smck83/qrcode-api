@@ -19,7 +19,7 @@ if 'SHORTIO_DOMAIN' in os.environ:
     shortioDomain = os.environ['SHORTIO_DOMAIN']
 
 if 'ALLOWED_HOSTNAMES' in os.environ:
-    allowedHostnames = os.environ['ALLOWED_HOSTNAMES'].split(' ')
+    allowedHostnames = (os.environ['ALLOWED_HOSTNAMES']).lower().split(' ')
     print(allowedHostnames)
 else:
     allowedHostnames =  []
@@ -79,7 +79,7 @@ def generate(message: str,short: bool = 1):
             hostname.reverse()
             hostname = hostname[1] + "." + hostname[0]
             print(hostname)
-        if hostname in allowedHostnames or len(allowedHostnames) == 0:
+        if hostname.lower() in allowedHostnames or len(allowedHostnames) == 0:
             return genQRcode(message,short)
         elif message == "[rawlink]":
             return genQRcode(message,0)

@@ -13,19 +13,18 @@
  - `SHORTIO_DOMAIN`
 
  ## How to run
-To run the container
+To run the container:
 ````
 docker run -it -p 8000:8000 smck83/qrcode-api
+````
 
- ````
-
-If you would like to use short.ioyou can run via:
+To run the container, with short.io integration:
 
 ````
  docker run -it -p 8000:8000 -e SHORTIO_APIKEY="<--  Your short.io API key-->" -e SHORTIO_DOMAIN="<-- Your short.io Domain Name -->" smck83/qrcode-api
 ````
 
-It is also possible to restrict the hostnames allowed by the API. e.g. to lockdown to Mimecast Awareness Training Phishing Simulation URLs e.g.:
+It is also possible to restrict the hostnames allowed by the API in the message=. e.g. to lockdown to Mimecast Awareness Training Phishing Simulation URLs:
 
 ````
  docker run -it -p 8000:8000 -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
