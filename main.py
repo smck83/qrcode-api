@@ -95,7 +95,9 @@ def generate(message: str,short: bool = 1):
         if "/" in message and "." in message and message.lower() != "[rawlink]":
             explodeURL = message.split('/')
             message = explodeURL[2]
-            hostname = getTLD(message)
+            hostname = message
+            if 'EXPAND_HOSTNAMES' in os.environ and os.environ['EXPAND_HOSTNAMES'] == "True":
+                hostname = getTLD(message)
             print("Input Hostnames: ",message,hostname)
         if (message.lower() in allowedHostnames or hostname.lower() in allowedHostnames) or len(allowedHostnames) == 0:
             return genQRcode(message,short)
