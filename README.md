@@ -31,3 +31,10 @@ It is also possible to restrict the hostnames allowed by the API in the message=
 ````
 
 Where `ALLOWED_HOSTNAMES` can have 1 or many (space seperated) allowed hostnames that the API will check the passed URL against. This is currently at the root level only e.g. If message= contained a URL with website.com.au, `com.au` would need to be in the `ALLOWED_HOSTNAMES` list, however it wouldnt be hard to make this configurable.
+
+| ENV VARIABLES|  Required? | Description |
+| ------------- | ------------- | ------------- |
+| ALLOWED_HOSTNAMES | No | Default `*` : restrict the API to a space seperated list of authorized hostnames |
+| EXPAND_HOSTNAMES | No | Default `False` : When set to `True` top level hostnames will be included, e.g. When `True` host3.host2.host1.com will also look for host1.com - Dependant on `ALLOWED_HOSTNAMES`|
+| SHORTIO_APIKEY | No | Default 'None' :  https://short.io API Key if you wish to use URL shortening |
+| SHORTIO_DOMAIN | No | Default 'None' :  https://short.io Domain Name to create short URLs. Dependant on `SHORTIO_APIKEY` |

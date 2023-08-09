@@ -18,11 +18,31 @@ if 'SHORTIO_APIKEY' in os.environ:
 if 'SHORTIO_DOMAIN' in os.environ:
     shortioDomain = os.environ['SHORTIO_DOMAIN']
 
+tldList = ['com','govt','org','edu','gov']
+
+def getTLD(hostname):
+    domain = hostname.split('.')
+    domain.reverse()
+    if len(domain) > 2 and domain[1] in tldList: # return three
+        return f"{domain[2]}.{domain[1]}.{domain[0]}"
+    elif len(domain) > 1:
+        return f"{domain[1]}.{domain[0]}"
+    else:
+        return hostname
+
 if 'ALLOWED_HOSTNAMES' in os.environ:
     allowedHostnames = (os.environ['ALLOWED_HOSTNAMES']).lower().split(' ')
-    print(allowedHostnames)
+    extraHostnames = []
+    if 'EXPAND_HOSTNAMES' in os.environ and os.environ['EXPAND_HOSTNAMES'] == "True":
+        print("EXPAND_HOSTNAME is True")
+        for host in allowedHostnames:
+            host = getTLD(host)
+            extraHostnames.append(host)
+    allowedHostnames = list(set(allowedHostnames + extraHostnames)) #remove duplicates
+    print("Allowed Hostnames:",allowedHostnames)
 else:
     allowedHostnames =  []
+    print("Allowed Hostnames:","*")
 
 def createShortIOURL(url):
     if shortenURLs == False:
@@ -72,21 +92,20 @@ def genQRcode(message,short:bool = 1):
 def generate(message: str,short: bool = 1):
     if re.match("(^http(s|):\/\/.+\..+|\[rawlink\])",message):
         hostname = message
-        if "/" in message and "." in message:
+        if "/" in message and "." in message and message.lower() != "[rawlink]":
             explodeURL = message.split('/')
-            hostname = explodeURL[2]
-            hostname = hostname.split('.')
-            hostname.reverse()
-            hostname = hostname[1] + "." + hostname[0]
-            print(hostname)
-        if hostname.lower() in allowedHostnames or len(allowedHostnames) == 0:
+            message = explodeURL[2]
+            hostname = getTLD(message)
+            print("Input Hostnames: ",message,hostname)
+        if (message.lower() in allowedHostnames or hostname.lower() in allowedHostnames) or len(allowedHostnames) == 0:
             return genQRcode(message,short)
         elif message == "[rawlink]":
-            return genQRcode(message,0)
+            return genQRcode(message,0) #don't send to URL shortener
         else:
             return {"error":"unauthorized"} 
     else:
         return {"error":"please ensure a URL is parsed"}
+
 
 
 
