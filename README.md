@@ -30,8 +30,6 @@ It is also possible to restrict the hostnames allowed by the API in the message=
  docker run -it -p 8000:8000 -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
 ````
 
-Where `ALLOWED_HOSTNAMES` can have 1 or many (space seperated) allowed hostnames that the API will check the passed URL against. This is currently at the root level only e.g. If message= contained a URL with website.com.au, `com.au` would need to be in the `ALLOWED_HOSTNAMES` list, however it wouldnt be hard to make this configurable.
-
 | ENV VARIABLES|  Required? | Description |
 | ------------- | ------------- | ------------- |
 | ALLOWED_HOSTNAMES | No | Default `*` : restrict the API to a space seperated list of authorized hostnames |
