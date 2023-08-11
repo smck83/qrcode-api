@@ -4,6 +4,9 @@
  e.g. 
  `https://localhost:8000/generate-qr-code?message=https://example.com`
 
+Similiar qrcode GET API here (fork of a project that works for POST) and can be hosted as a Cloudflare Worker (free)
+https://github.com/smck83/qrcode-cloudflare-worker
+
  ## URL shortnening
  Support for URL shortener service `short.io` has been added. This allows you to keep the QR code version low, which means a more simple QR code.
 
