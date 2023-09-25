@@ -8,6 +8,7 @@ import requests
 import os
 from fastapi import FastAPI
 
+
 cache = {}
 shortenURLs = False
 
@@ -49,17 +50,17 @@ def createShortIOURL(url):
         print ("URL Shortening is disabled")
         return url
     elif url not in cache:
-        payload = {
+        payload = json.dumps({
             "allowDuplicates": False,
             "domain": shortioDomain,
             "originalURL": url
-        }
+        })
         headers = {
             "accept": "application/json",
             "content-type": "application/json",
             'authorization': shortioKey
         }
-        response = requests.post("https://api.short.io/links", json=payload, headers=headers)
+        response = requests.post("https://api.short.io/links", data=payload, headers=headers)
         output = json.loads(response.text)
         print(output)
         cache[url] = output["shortURL"]
