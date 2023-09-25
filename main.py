@@ -26,11 +26,11 @@ def getTLD(hostname):
     domain.reverse()
     if len(domain) > 2 and domain[1] in tldList: # return three
         output =  f"{domain[2]}.{domain[1]}.{domain[0]}"
-        print(output)
+        #print(output)
         return output
     elif len(domain) > 1:
         output =  f"{domain[1]}.{domain[0]}"
-        print(output)
+        #print(output)
         return output
     else:
         return hostname
@@ -98,16 +98,16 @@ def genQRcode(message,short:bool = 1):
 def generate(message,short: bool = 1):
     print("input message:",message)
     if re.match("(^http(s|):\/\/.+\..+|\[rawlink\])",message):
-        hostname = message
+        hostname = ""
+        tldHostname = ""
         if "/" in message and "." in message and message.lower() != "[rawlink]":
             explodeURL = message.split('/')
             hostname = explodeURL[2]
-            print(hostname)
+            
+            print("Hostname:",hostname)
             if 'EXPAND_HOSTNAMES' in os.environ and os.environ['EXPAND_HOSTNAMES'] == "True":
-                #hostname = getTLD(message)
                 tldHostname = getTLD(hostname)
-                print(tldHostname)
-            print("Input Hostnames: ",message,hostname)
+                print('TLD hostname:',tldHostname)
         if (tldHostname.lower() in allowedHostnames or hostname.lower() in allowedHostnames) or len(allowedHostnames) == 0:
             return genQRcode(message,short)
         elif message == "[rawlink]":
