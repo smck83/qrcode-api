@@ -94,8 +94,7 @@ def generate(message: str,short: bool = 1):
         hostname = message
         if "/" in message and "." in message and message.lower() != "[rawlink]":
             explodeURL = message.split('/')
-            message = explodeURL[2]
-            hostname = message
+            hostname = explodeURL[2]
             if 'EXPAND_HOSTNAMES' in os.environ and os.environ['EXPAND_HOSTNAMES'] == "True":
                 hostname = getTLD(message)
             print("Input Hostnames: ",message,hostname)
