@@ -1,5 +1,5 @@
 # qrcode-api
- An API built using fastAPI that returns an auto-generated QR code when a URL is passed into `message`
+ An API built using fastAPI that returns an dynamic QR code pointing to a URL in the GET variable `message`
 
  e.g. 
  `https://localhost:8000/generate-qr-code?message=https://example.com`
