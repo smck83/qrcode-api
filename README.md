@@ -4,6 +4,9 @@
  e.g. 
  `https://localhost:8000/generate-qr-code?message=https://example.com`
 
+Similiar qrcode GET API here (which is a modified fork of a project that requires a POST) and can be hosted as a Cloudflare Worker (free)
+https://github.com/smck83/qrcode-cloudflare-worker
+
  ## URL shortnening
  Support for URL shortener service `short.io` has been added. This allows you to keep the QR code version low, which means a more simple QR code.
 
@@ -29,8 +32,6 @@ It is also possible to restrict the hostnames allowed by the API in the message=
 ````
  docker run -it -p 8000:8000 -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
 ````
-
-Where `ALLOWED_HOSTNAMES` can have 1 or many (space seperated) allowed hostnames that the API will check the passed URL against. This is currently at the root level only e.g. If message= contained a URL with website.com.au, `com.au` would need to be in the `ALLOWED_HOSTNAMES` list, however it wouldnt be hard to make this configurable.
 
 | ENV VARIABLES|  Required? | Description |
 | ------------- | ------------- | ------------- |
