@@ -60,9 +60,10 @@ def createShortIOURL(url):
             "content-type": "application/json",
             'authorization': shortioKey
         }
+        print(payload)
         response = requests.post("https://api.short.io/links", data=payload, headers=headers)
         output = json.loads(response.text)
-        print(output)
+        print("json payload:",output)
         cache[url] = output["shortURL"]
         print(cache)
         #print(output["shortURL"])
@@ -90,7 +91,10 @@ def genQRcode(message,short:bool = 1):
 
 
 @app.get("/generate-qr-code")
-def generate(message: str,short: bool = 1):
+def generate(message,short: bool = 1):
+    print("input::",message)
+    #message = message.replace("%23","#")
+    print("input2::",message)
     if re.match("(^http(s|):\/\/.+\..+|\[rawlink\])",message):
         hostname = message
         if "/" in message and "." in message and message.lower() != "[rawlink]":
