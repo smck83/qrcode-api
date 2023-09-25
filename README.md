@@ -30,7 +30,7 @@ To run the container, with short.io integration:
 It is also possible to restrict the hostnames allowed by the API in the message=. e.g. to lockdown to Mimecast Awareness Training Phishing Simulation URLs:
 
 ````
- docker run -it -p 8000:8000 -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
+ docker run -it -p 8000:8000 -e EXPAND_HOSTNAMES="True" -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
 ````
 
 | ENV VARIABLES|  Required? | Description |
