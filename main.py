@@ -18,7 +18,7 @@ if 'SHORTIO_APIKEY' in os.environ:
 if 'SHORTIO_DOMAIN' in os.environ:
     shortioDomain = os.environ['SHORTIO_DOMAIN']
 
-tldList = ['com','govt','org','edu','gov']
+tldList = ['com','govt','org','edu','gov','co']
 
 def getTLD(hostname):
     domain = hostname.split('.')
