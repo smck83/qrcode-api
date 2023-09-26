@@ -23,7 +23,6 @@ Where:
 `& = %26`, and
 `# = %23`
 
-````
 
  ## URL shortnening
  Support for URL shortener service `short.io` has been added. This allows you to keep the QR code version low, which means a more simple QR code.
