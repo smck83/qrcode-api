@@ -2,7 +2,8 @@
  An API built using fastAPI that returns a dynamic QR code pointing to a URL in the GET variable `message`
 
  e.g. 
- `https://localhost:8000/generate-qr-code?message=https://example.com`
+ 
+     https://localhost:8000/generate-qr-code?message=https://example.com
 
 Similiar qrcode GET API here (which is a modified fork of a project that requires a POST) and can be hosted as a Cloudflare Worker (free)
 https://github.com/smck83/qrcode-cloudflare-worker
