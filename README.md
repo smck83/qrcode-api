@@ -10,11 +10,11 @@ https://github.com/smck83/qrcode-cloudflare-worker
 ````
 NOTE: GET requests do not support special characters like # and &, as these are used for fragment identifier and parameters:
 e.g.
- `https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree&value2=threefourfive#abc123`
+ https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree&value2=threefourfive#abc123
 
 To pass these variables successfuly, special characters such as # and & first be individually URL encoded:
 e.g.
- `https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree%26value2=threefourfive#abc123`
+https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree%26value2=threefourfive#abc123
 
 Where
 & = %26, and
