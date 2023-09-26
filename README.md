@@ -14,7 +14,7 @@ e.g.
 
 To pass these variables successfuly, special characters such as # and & first be individually URL encoded:
 e.g.
-https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree%26value2=threefourfive#abc123
+https://localhost:8000/generate-qr-code?message=https://example.com/?value=onetwothree%26value2=threefourfive%23abc123
 
 Where
 & = %26, and
