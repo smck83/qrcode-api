@@ -6,7 +6,7 @@ DISCLAIMER: This is an unofficial, unsupported and unaffiliated instruction on h
 It is possible to host your own QR Code generator API endpoint and point Mimecast Awareness Training Phishing Simulation to test your users with QR Codes.
 
 
-The Mimecast phishing simulation template variable to track an end user clicking a link is `[rawlink]` which will be dynamically replaced with a unique URL upon delivery to be able to attribute an end user, clicking the unique link.
+The Mimecast phishing simulation template variable to track an end user clicking a link is `[rawlink]` which will be dynamically replaced with a unique URL upon delivery to be able to attribute an end user, clicking (or in this case, scanning) the unique link.
 
 The value of `[rawlink]` can be passed to a web endpoint when the phishing simulation e-mail loads in an end users mailbox client (Outlook, OWA etc) to request a QR Code image such as [qrcode-api](https://github.com/smck83/qrcode-api/)
 
