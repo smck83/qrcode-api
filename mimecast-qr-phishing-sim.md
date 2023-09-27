@@ -42,13 +42,13 @@ Google Charts provides a publicly available GET endpoint that can receive a stri
 ## Google Charts
 Google Charts provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://developers.google.com/chart/infographics/docs/qr_codes
 
-### QR Code Only
+### * QR Code Only
 
 ````
 <img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
 ````
 
-### Hyperlinked QR Code
+### * Hyperlinked QR Code
 
 ````
 <a href=[rawlink]>
@@ -59,13 +59,13 @@ Google Charts provides a publicly available GET endpoint that can receive a stri
 ## QuickChart
 QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://quickchart.io/qr-code-api/
 
-### QR Code Only
+### * QR Code Only
 
 ````
 <img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
 ````
 
-### Hyperlinked QR Code
+### * Hyperlinked QR Code
 
 ````
 <a href=[rawlink]>
