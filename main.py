@@ -18,7 +18,7 @@ if 'HOST_URL' in os.environ:
 else:
     host_url = None
 
-#host_url = "https://localhost:8000/g"
+#host_url = "https://localhost:8000"
 
 if 'SHORTIO_APIKEY' in os.environ:
     shortioKey = os.environ['SHORTIO_APIKEY']
@@ -99,10 +99,13 @@ def genQRcode(message,short:bool = 1):
         try:
             if short == 1 and message != "[rawlink]":
                 shortURL = createShortIOURL(message)
-            else:
+            elif message!= "[rawlink]":
                 print("URL Shortening override.")
                 shortURL = (createShortLink(message))['shortURL']
                 #shortURL = message
+            else:
+                print("URL Shortening override.")
+                shortURL = message                               
         except Exception as e:
             print(e)
         else:

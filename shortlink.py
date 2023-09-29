@@ -43,7 +43,7 @@ def createURL(url,customkey:str=False,length:int=5):
     if keyExists(url) == False:       
         addKey(key,url)
         addKey(url,key)
-        print("Adding:",output)
+        print("Adding:",f"{key}:{url}")
         return(key)
     else:
         output = getURL(url)
