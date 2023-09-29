@@ -42,6 +42,7 @@ https://github.com/smck83/shortlink-api has been added as an alternative. Shortl
 NOTE: If SHORTIO_APIKEY environment variable is present, it will take precedence over the inbuilt URL shortener.
 
  ## How to run
+
 To run the container:
 ````
 docker run -it -p 8000:8000 smck83/qrcode-api
@@ -51,6 +52,12 @@ To run the container, with short.io integration:
 
 ````
  docker run -it -p 8000:8000 -e SHORTIO_APIKEY="<--  Your short.io API key-->" -e SHORTIO_DOMAIN="<-- Your short.io Domain Name -->" smck83/qrcode-api
+````
+
+To run the container, with inbuilt URL shortener:
+
+````
+ docker run -it -p 8000:8000 -e HOST_URL="<-- The public URL of your container -->" -e EXPAND_HOSTNAMES="True" -e ALLOWED_HOSTNAMES="therelayservice.com" smck83/qrcode-api
 ````
 
 It is also possible to restrict the hostnames allowed by the API in the message=. e.g. to lockdown to Mimecast Awareness Training Phishing Simulation URLs:
