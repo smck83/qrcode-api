@@ -6,7 +6,6 @@ from starlette.responses import StreamingResponse
 import re
 import requests
 import os
-from fastapi import FastAPI
 import shortlink
 from fastapi.responses import RedirectResponse
 
