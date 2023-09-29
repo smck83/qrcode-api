@@ -6,7 +6,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     ntp \
     && mkdir -p ${MY_APP_PATH}
 
-ADD main.py requirements.txt run.py ${MY_APP_PATH}
+ADD main.py requirements.txt shortlink.py run.py ${MY_APP_PATH}
+COPY data ${MY_APP_PATH}/data
 RUN pip3 install -r ${MY_APP_PATH}/requirements.txt
 #RUN pip3 install fastapi uvicorn[standard] qrcode[pil] requests
 WORKDIR ${MY_APP_PATH}

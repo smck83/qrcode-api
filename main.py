@@ -7,14 +7,23 @@ import re
 import requests
 import os
 from fastapi import FastAPI
-
+import shortlink
+from fastapi.responses import RedirectResponse
 
 cache = {}
 shortenURLs = False
 
+
+if 'HOST_URL' in os.environ:
+    host_url = os.environ['HOST_URL'] + "/g"
+else:
+    host_url = None
+
+#host_url = "https://localhost:8000/g"
+
 if 'SHORTIO_APIKEY' in os.environ:
     shortioKey = os.environ['SHORTIO_APIKEY']
-    print("URL shortening is ON!")
+    print("SHORTIO - URL shortening is ON!")
     shortenURLs = True
 if 'SHORTIO_DOMAIN' in os.environ:
     shortioDomain = os.environ['SHORTIO_DOMAIN']
@@ -51,7 +60,9 @@ else:
 
 def createShortIOURL(url):
     if shortenURLs == False:
-        print ("URL Shortening is disabled")
+        print ("SHORTIO - URL Shortening is disabled")
+        if host_url != None:
+            url = (createShortLink(url))['shortURL']
         return url
     elif url not in cache:
         payload = json.dumps({
@@ -70,10 +81,18 @@ def createShortIOURL(url):
         print("json payload:",output)
         cache[url] = output["shortURL"]
         print(cache)
-        #print(output["shortURL"])
         return output["shortURL"]
     elif url in cache:
         return cache[url]
+
+
+def createShortLink(url: str,key = False,length:int = 5):
+    outputURL = host_url + "/" + str(shortlink.createURL(url,key,length))
+    output = { "shortURL": outputURL,
+               "originalURL" : url
+              }
+
+    return output
 
 app = FastAPI()
 
@@ -83,7 +102,8 @@ def genQRcode(message,short:bool = 1):
                 shortURL = createShortIOURL(message)
             else:
                 print("URL Shortening override.")
-                shortURL = message
+                shortURL = (createShortLink(message))['shortURL']
+                #shortURL = message
         except Exception as e:
             print(e)
         else:
@@ -96,6 +116,7 @@ def genQRcode(message,short:bool = 1):
 
 @app.get("/generate-qr-code")
 def generate(message,short: bool = 1):
+    
     print("input message:",message)
     if re.match("(^http(s|):\/\/.+\..+|\[rawlink\])",message):
         hostname = ""
@@ -109,6 +130,7 @@ def generate(message,short: bool = 1):
                 tldHostname = getTLD(hostname)
                 print('TLD hostname:',tldHostname)
         if (tldHostname.lower() in allowedHostnames or hostname.lower() in allowedHostnames) or len(allowedHostnames) == 0:
+            
             return genQRcode(message,short)
         elif message == "[rawlink]":
             return genQRcode(message,0) #don't send to URL shortener
@@ -117,6 +139,17 @@ def generate(message,short: bool = 1):
     else:
         return {"error":"please ensure a URL is parsed"}
 
+@app.get("/g/{key}", response_class=RedirectResponse, status_code=302)
+async def redirect_short2Long(key):
+    defaultRedirect = "https://github.com/smck83/qrcode-api"
+    if key != None and shortlink.keyExists(key) == True:
+        outputURL = shortlink.getURL(key)
+        if "http" in outputURL:
+            return outputURL
+        else:
+            return defaultRedirect
+    else:
+        return defaultRedirect
 
 
 
