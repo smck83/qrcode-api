@@ -25,12 +25,21 @@ Where:
 
 
  ## URL shortnening
+
+ ### Short.io
+
  Support for URL shortener service `short.io` has been added. This allows you to keep the QR code version low, which means a more simple QR code.
 
  TO use `https://short.io` you will need to signup for a FREE or PAID account and parse the two(2) `ENVIRONMENT VARIABLES` to the docker container:
 
  - `SHORTIO_APIKEY`
  - `SHORTIO_DOMAIN`
+
+### Inbuilt URL shortener
+
+https://github.com/smck83/shortlink-api has been added as an alternative. Shortlink is a builtin URL shortener. To enable this you only need to add an `ENVIRONMENT VARIABLE` at runtime called `HOST_URL`
+
+NOTE: If SHORTIO_APIKEY environment variable is present, it will take precedence over the inbuilt URL shortener.
 
  ## How to run
 To run the container:
