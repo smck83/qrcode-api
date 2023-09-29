@@ -56,3 +56,4 @@ It is also possible to restrict the hostnames allowed by the API in the message=
 | EXPAND_HOSTNAMES | No | Default `False` : When set to `True` top level hostnames will be included from `ALLOWED_HOSTNAMES`, e.g. When `True` and `/?message=https://host3.host2.host1.com/abc123` - script will check `ALLOWED_HOSTNAMES` for `host3.host2.host1.com` AND also TLD, `host1.com` instead of only host3.host2.host1.com|
 | SHORTIO_APIKEY | No | Default `None` :  https://short.io API Key if you wish to use URL shortening |
 | SHORTIO_DOMAIN | No | Default `None` :  https://short.io Domain Name to create short URLs. Dependant on `SHORTIO_APIKEY` |
+| HOST_URL | No | Default `None` :  If this is set, the inbuilt URL shortener will be used sharing shortlinks using this URL prefix e.g. `https://public.example.com` |
