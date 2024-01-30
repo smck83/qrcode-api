@@ -3,8 +3,15 @@ import random
 
 dbName = "data/shortLink"
 uppercase_letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-def keyExists(key):
+def initialize():
     with dbm.open(dbName, 'c') as db:
+        if "init" in db:
+            "initialized"
+        else:
+            db["init"] = "initialized"
+
+def keyExists(key):
+    with dbm.open(dbName, 'r') as db:
         if key in db:
             return True
         else:
@@ -33,7 +40,8 @@ def addKey(key,url):
 
 def getURL(key):
     with dbm.open(dbName, 'r') as db:
-        return str(db[key],encoding='utf-8')
+        if key in db:
+            return str(db[key],encoding='utf-8')
 
 def createURL(url,customkey:str=False,length:int=5):
     if customkey == False:

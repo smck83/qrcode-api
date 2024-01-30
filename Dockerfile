@@ -1,20 +1,18 @@
-FROM pypy:3.9
+FROM debian:11
 LABEL maintainer="s@mck.la"
 ARG MY_APP_PATH=/opt/generate-qr-code
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ntp \
-    && mkdir -p ${MY_APP_PATH}
+    ntp python3 pip \
+    && mkdir -p ${MY_APP_PATH}/data
 
 ADD main.py requirements.txt shortlink.py run.py ${MY_APP_PATH}
-COPY data ${MY_APP_PATH}/data
-RUN pip3 install -r ${MY_APP_PATH}/requirements.txt
-#RUN pip3 install fastapi uvicorn[standard] qrcode[pil] requests
+RUN pip install -r ${MY_APP_PATH}/requirements.txt
 WORKDIR ${MY_APP_PATH}
 
 
 VOLUME [${MY_APP_PATH}]
 
-ENTRYPOINT pypy3 -u run.py
+ENTRYPOINT /usr/bin/python3 -u run.py
 
 EXPOSE 8000/tcp
