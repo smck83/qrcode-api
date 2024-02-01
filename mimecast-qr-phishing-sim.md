@@ -72,3 +72,16 @@ QuickChart provides a publicly available GET endpoint that can receive a string 
 <img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
 </a>
 ````
+## Add hostname(s) to Trusted Sites
+By default, Outlook will not load images externally hosted. To resolve this, without configuring Outlook to load 'ALL' external images add the hostnames of the endpoint(s) you decide to use to `Trusted Sites`
+Manually via:
+
+````
+Open Control Panel.
+Click or double-click the Internet Options icon.
+In the Internet Properties window, click the Security tab.
+Select Trusted sites and click the Sites button.
+Type the address of the QR Code endpoint hostname in the Add this website to field text box (e.g. https://yourpublic.hostname.com/ or https://chart.googleapis.com/)
+Click the Add button and click OK to save the addition to the site.
+````
+Or using Group Policy (GPO) using this ManageEngine instruction on [Securing zone levels in Internet Explorer](https://blogs.manageengine.com/active-directory/2018/08/02/securing-zone-levels-internet-explorer.html)https://blogs.manageengine.com/active-directory/2018/08/02/securing-zone-levels-internet-explorer.html.
