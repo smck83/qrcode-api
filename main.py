@@ -142,7 +142,7 @@ def generate(message,authKey = None,short: bool = 1):
         print("Provided auth key:",authKey)
 
         if (tldHostname.lower() in allowedHostnames or hostname.lower() in allowedHostnames) or len(allowedHostnames) == 0 or (authKey != None and authKey in authList):
-
+            print("Short",short)
             return genQRcode(message,short)
         elif message == "[rawlink]":
             return genQRcode(message,0) #don't send to URL shortener
