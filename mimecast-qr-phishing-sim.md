@@ -22,24 +22,6 @@ The value of `[rawlink]` can be passed to a web endpoint when the phishing simul
 ````
 # Alternatives to hosting [qrcode-api](https://github.com/smck83/qrcode-api/)
 
-## Google Charts (Deprecated) - this endpoint is end of life and Google Charts no longer support QR code generation
-https://developers.google.com/chart/infographics/docs/qr_codes
-Google Charts provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work.
-
-#### QR Code Only
-
-````
-<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
-````
-
-#### Hyperlinked QR Code
-
-````
-<a href=[rawlink]>
-<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
-</a>
-````
-
 ## QuickChart
 QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://quickchart.io/qr-code-api/
 
@@ -73,6 +55,25 @@ goQR.me is one of the leading sites on the web for QR Codes, QR Code marketing a
 <img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=[rawlink]' />
 </a>
 ````
+
+## Google Charts (Deprecated) - this endpoint is end of life and Google Charts no longer support QR code generation
+https://developers.google.com/chart/infographics/docs/qr_codes
+Google Charts provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work.
+
+#### QR Code Only
+
+````
+<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
+````
+
+#### Hyperlinked QR Code
+
+````
+<a href=[rawlink]>
+<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
+</a>
+````
+
 
 ## Add hostname(s) to Trusted Sites
 By default, Outlook will not load images externally hosted. To resolve this, without configuring Outlook to load 'ALL' external images add the hostnames of the endpoint(s) you decide to use to `Trusted Sites`
