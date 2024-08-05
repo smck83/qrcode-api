@@ -56,6 +56,24 @@ QuickChart provides a publicly available GET endpoint that can receive a string 
 <img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
 </a>
 ````
+
+## QRServer
+goQR.me is one of the leading sites on the web for QR Codes, QR Code marketing and QR in general. They offer their customers expertise to all things concerning the right usage of QR Codes. A professional marketing platform for targeted QR Code Management (Campaigns, editable QR Codes etc.) https://goqr.me/api/
+
+#### QR Code Only
+
+````
+<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=[rawlink]' />
+````
+
+#### Hyperlinked QR Code
+
+````
+<a href=[rawlink]>
+<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=[rawlink]' />
+</a>
+````
+
 ## Add hostname(s) to Trusted Sites
 By default, Outlook will not load images externally hosted. To resolve this, without configuring Outlook to load 'ALL' external images add the hostnames of the endpoint(s) you decide to use to `Trusted Sites`
 Manually via:
