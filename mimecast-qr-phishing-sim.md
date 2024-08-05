@@ -23,7 +23,7 @@ The value of `[rawlink]` can be passed to a web endpoint when the phishing simul
 # Alternatives to hosting [qrcode-api](https://github.com/smck83/qrcode-api/)
 
 ## QuickChart
-QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://quickchart.io/qr-code-api/
+QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Up from their FREE tier, is $40/month which includes URL shortening Documentation : https://quickchart.io/qr-code-api/
 
 #### QR Code Only
 
