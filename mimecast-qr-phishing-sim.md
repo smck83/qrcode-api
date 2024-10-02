@@ -1,6 +1,6 @@
 # Add QR Code Phishing Simulation to Mimecast Awareness Training
 
-**UPDATE SEPT 2024 : Mimecast now natively support QR Code phishing simulation by using the tag `[qrtag]` which will populate a unique QR code per phishing simulation e-mail.**
+**UPDATE SEPT 2024 : Mimecast now natively support QR Code phishing simulation by using the tag `[qrcode]` which will populate a unique QR code per phishing simulation e-mail.**
 
 ````
 DISCLAIMER: This is an unofficial, unsupported and unaffiliated instruction on how Mimecast Phishing Simulation can be customised using qrcode-api to support QR code phishing simulation.
