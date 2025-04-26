@@ -8,6 +8,7 @@ import requests
 import os
 import shortlink
 from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse
 
 cache = {}
 shortenURLs = False
