@@ -1,4 +1,7 @@
 # Add QR Code Phishing Simulation to Mimecast Awareness Training
+
+**UPDATE SEPT 2024 : Mimecast now natively support QR Code phishing simulation by using the tag `[qrcode]` which will populate a unique QR code per phishing simulation e-mail.**
+
 ````
 DISCLAIMER: This is an unofficial, unsupported and unaffiliated instruction on how Mimecast Phishing Simulation can be customised using qrcode-api to support QR code phishing simulation.
 ````
@@ -22,7 +25,42 @@ The value of `[rawlink]` can be passed to a web endpoint when the phishing simul
 ````
 # Alternatives to hosting [qrcode-api](https://github.com/smck83/qrcode-api/)
 
-## Google Charts
+## QuickChart
+QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Up from their FREE tier, is $40/month which includes URL shortening Documentation : https://quickchart.io/qr-code-api/
+
+#### QR Code Only
+
+````
+<img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
+````
+
+#### Hyperlinked QR Code
+
+````
+<a href=[rawlink]>
+<img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
+</a>
+````
+
+## QRServer
+goQR.me is one of the leading sites on the web for QR Codes, QR Code marketing and QR in general. They offer their customers expertise to all things concerning the right usage of QR Codes. A professional marketing platform for targeted QR Code Management (Campaigns, editable QR Codes etc.) https://goqr.me/api/
+
+#### QR Code Only
+
+````
+<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=[rawlink]' />
+````
+
+#### Hyperlinked QR Code
+
+````
+<a href=[rawlink]>
+<img src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=[rawlink]' />
+</a>
+````
+
+## Google Charts (Deprecated) - this endpoint is end of life and Google Charts no longer support QR code generation
+https://developers.google.com/chart/infographics/docs/qr_codes
 Google Charts provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work.
 
 #### QR Code Only
@@ -39,39 +77,7 @@ Google Charts provides a publicly available GET endpoint that can receive a stri
 </a>
 ````
 
-## Google Charts
-Google Charts provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://developers.google.com/chart/infographics/docs/qr_codes
 
-#### QR Code Only
-
-````
-<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
-````
-
-#### Hyperlinked QR Code
-
-````
-<a href=[rawlink]>
-<img src='https://chart.googleapis.com/chart?cht=qr&chs=200x200&&chld=M|1&chl=[rawlink]' />
-</a>
-````
-
-## QuickChart
-QuickChart provides a publicly available GET endpoint that can receive a string and return a QR code (like qrcode-api). This could also be used, however unlike [qrcode-api](https://github.com/smck83/qrcode-api/) this API does not shorten URL's. The string length of `[rawlink]` is ~440 characters which will result in a very large QR code if not first shortened, but will still work. Documentation : https://quickchart.io/qr-code-api/
-
-#### QR Code Only
-
-````
-<img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
-````
-
-#### Hyperlinked QR Code
-
-````
-<a href=[rawlink]>
-<img src='https://quickchart.io/qr?margin=2&size=200&text=[rawlink]' />
-</a>
-````
 ## Add hostname(s) to Trusted Sites
 By default, Outlook will not load images externally hosted. To resolve this, without configuring Outlook to load 'ALL' external images add the hostnames of the endpoint(s) you decide to use to `Trusted Sites`
 Manually via:
